@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="customer/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy:Customer</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+	
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				Fill The Details
+			</div>
+			
+			<div class="card-body">
+				<form action="/customer/addToCartData" method="GET" th:object="${med}">
+					<div class="mb-3">
+					  <label  class="form-label">Medicine Id</label>
+					  <input required readonly type="text" th:value="*{m_id}" name="medid" class="form-control"  placeholder="Medicine name">
+					</div>
+					<div class="mb-3">
+					  <label  class="form-label">Medicine name</label>
+					  <input required readonly type="text" th:value="*{med_name}" name="med_name" class="form-control"  placeholder="Medicine name">
+					</div>
+					<div class="mb-3">
+					  <label  class="form-label">Medicine Price</label>
+					  <input required readonly type="number" step=any th:value="*{m_price}" name="medprice" class="form-control"  placeholder="Medicine name">
+					</div>
+					<div class="mb-3">
+					  <label  class="form-label">Medicine Qty</label>
+					  <input required type="number" name="medQty" class="form-control"  placeholder="Medicine name">
+					</div>
+					<button class="btn btn-success" type="submit">Add To Cart</button>
+				</form>
+			</div>
+		</div>
+	</div>
+  </section>
+    
+  
+  </body>
+
+</html>

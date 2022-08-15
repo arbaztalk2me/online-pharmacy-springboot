@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+  	<div class="m-2">
+		<div class="row g-0">
+			<div class="col-md-3">
+				<div class="card">
+				<div class="card-header">Add Medicine</div>
+					<div class="card-body">
+						<form th:action="@{/admin/addMedicine}" method="GET">
+							<div class="mb-3">
+							  <label  class="form-label">Medicine name</label>
+							  <input required type="text" name="med_name" class="form-control"  placeholder="Medicine name">
+							</div>
+							<div class="mb-3">
+							  <label  class="form-label">Quantity</label>
+							  <input required type="text" name="m_qty" class="form-control"  placeholder="Enter Quantity">
+							</div>
+							<div class="mb-3">
+							  <label class="form-label">Price</label>
+							  <input required type="text"  name="m_price" class="form-control" placeholder="Enter Price">
+							</div>
+							<button class="btn btn-success">Add Medicine</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="ms-2 col-md-8">
+				<div class="card">
+					<div class="card-header text-center">Medicine Available in Stocks</div>
+					<div class="card-body">
+						<table class="table">
+							  <thead>
+							    <tr>
+							      <th scope="col">Id</th>
+							      <th scope="col">Medicine Name</th>
+							      <th scope="col">Available quantity</th>
+							      <th scope="col">Price</th>
+							      <th scope="col">Action</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							  <tr th:each="Medicine: ${medList}">
+							      <th scope="row" th:text="${Medicine.m_id}"></th>
+							      <td th:text="${Medicine.med_name}" ></td>
+							      <td th:text="${Medicine.m_qty}"></td>
+							      <td th:text="${Medicine.m_price}"></td>
+							      <td>
+							      	<a class="btn btn-warning" th:href="@{'/admin/editMedicine/'+ ${Medicine.m_id}}">Edit</a> |<a th:href="@{'/admin/deleteMedicine/'+ ${Medicine.m_id}}" class="btn btn-danger">Delete</a>
+							      </td>
+							    </tr>
+							  </tbody>
+							</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+  </section>
+    
+  
+  </body>
+
+</html>

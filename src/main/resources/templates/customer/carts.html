@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="customer/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy:Customer</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+	<div class="container">
+		
+		<div class="text-center h2">Your Cart Items</div>
+		<span th:if="${mm}!=null" >
+		<tr th:each="medicine:${mm}">
+			<div class="card mb-2">
+				<div class="card-body">
+					Medicine Id: <td class="card-text" th:text="${medicine.m_id}"></td><br/>
+					Medicine Name: <td class="card-text" th:text="${medicine.med_name}" ></td><br/>
+					Medicine Quantity: <td class="card-text" th:text="${medicine.m_qty}" ></td><br/>
+					Medicine Price: <td class="card-text" th:text="${medicine.m_price}" ></td><br/>
+				</div>
+			</div>
+		</tr>
+		</span>
+		<div class="d-flex justify-content-center">
+		<h4>Total Cart Price :</h4><h4 th:text="${amount}"></h4>
+		</div>
+		<div class="d-flex justify-content-center">
+		<a class="btn btn-success" th:href="@{/customer/orderForm}">BuyNow</a>
+		</div>
+	</div>
+  </section>
+    
+  
+  </body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+
+  <head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+  </head>
+
+  <body>
+  <section class="mt-3">
+	<h2 class="text-center">Login Now</h2>
+	 	<div class="d-flex justify-content-center">
+	 	<div class="card" style="width: 38rem;">
+	 		<div class="card-body" >
+	 			<div th:if="${param.error}" class="alert alert-danger" >
+				 	Invalid Email And Password
+				</div>
+				<div th:if="${param.logout}" class="alert alert-success">
+				  Logout Success
+				</div>
+	 			<form th:action="@{/dologin}" method="POST" >
+	 				<div class="mb-3">
+					  <label for="exampleFormControlInput1" class="form-label">Email</label>
+					  <input required name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Username">
+					</div>
+	 			
+	 				
+					<div class="mb-3">
+					  <label for="exampleFormControlInput1" class="form-label">Password</label>
+					  <input required name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Enter Password">
+					</div>
+					<p>Don't have account? <a class="text-decoration-none" th:href="@{/signup}">Signup Now</a><p>
+					<button class="btn btn-success">Login</button>
+	 			</form>
+	 		</div>
+	 	</div>
+	 	</div>	
+  </section>
+    
+  
+  </body>
+
+</html>

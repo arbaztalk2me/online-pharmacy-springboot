@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="customer/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy:Customer</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				Fill details to deliver Order
+			</div>
+			<div class="card-body">
+				<form action="/customer/getOrderDetails" method="GET">
+					<input name="name" placeholder="Enter your name" class="mb-2 form-control"/>
+					<input name="address" placeholder="Enter Address" class="mb-2 form-control"/>
+					<input name="imgurl" placeholder="Enter prescription url" class="mb-2 form-control"/>
+					<input name="number" placeholder="enter your number" class="mb-2 form-control"/>
+					<select class="mb-2 form-control" name="did">
+					<tr th:each="ul:${u}">
+						
+							<option th:value="${ul.id}"  th:text="${ul.username}"></option>
+						
+					</tr>
+					</select>
+					<button type="submit" class="btn btn-success">Order Now</button>
+				</form>
+			</div>
+		</div>
+	</div>
+  </section>
+    
+  
+  </body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="customer/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy:Customer</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-center">Your Order Details</div>
+			<div class="card-body">
+				<table class="table">
+							  <thead>
+							    <tr>
+							      <th scope="col">Id</th>
+							      <th scope="col">Customer Name</th>
+							      <th scope="col">Address</th>
+							      <th scope="col">Mobile No.</th>
+							      <th scope="col">Img Url</th>
+							      <th scope="col">Medicine Id</th>
+							      <th scope="col">Amount</th>
+							      <th scope="col">Order Status</th>
+							      <th scope="col">Delivery Status</th>
+							      <th scope="col">Action</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							  <tr th:each="ord: ${ordList}">
+							      <th scope="row" th:text="${ord.order_id}"></th>
+							      <td th:text="${ord.name}" ></td>
+							      <td th:text="${ord.address}"></td>
+							      <td th:text="${ord.mobile}"></td>
+							      <td th:text="${ord.img_url}" ></td>
+							      <td th:text="${ord.medicine.m_id}"></td>
+							      <td th:text="${ord.amount}"></td>
+							      <td th:text="${ord.order_status}"></td>
+							      <td th:text="${ord.delivery_status}"></td>
+							      
+							      <td>
+							      <span th:if="${ord.delivery_status}=='Not Delivered'" >
+							      	<a th:href="@{'/customer/editOrder/'+${ord.order_id}}" class="btn btn-warning">Edit Order</a>|
+							      	<a href="" class="btn btn-danger">Delete Order</a>
+							      </span>
+							      </td>
+							    </tr>
+							  </tbody>
+							</table>
+			</div>
+		</div>
+	</div>
+  </section>
+    
+  
+  </body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::Layout(~{::section})">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>Online Pharmacy</title>
+  </head>
+
+  <body>
+  <section class="mt-3">
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				Edit Customer Details
+			</div>
+			<div class="card-body">
+				<form th:action="@{/admin/updateCustomer}" method="POST" th:object="${editUser}">
+				<input th:value="*{id}" required type="hidden" name="id" class="form-control"  >
+					<div class="mb-3">
+							<label  class="form-label">username</label>
+							<input th:value="*{username}" required type="text" name="username" class="form-control"  placeholder="Eneter username">
+					</div>
+					<div class="mb-3">
+							<label  class="form-label">username</label>
+							<input th:value="*{password}" required type="password" name="password" class="form-control"  placeholder="Eneter password">
+					</div>
+					<button class="btn btn-success">Save</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+  </section>
+    
+  
+  </body>
+
+</html>
